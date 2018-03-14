@@ -18,7 +18,8 @@ class Autocomplete extends React.Component {
     this.state = {
       locations: locations, // locations to load by default.
       searchText: '',
-      listVisibility: false
+      listVisibility: false,
+      error: false
     }
 
     this.performSearch = this.performSearch.bind(this);
@@ -31,6 +32,14 @@ class Autocomplete extends React.Component {
 
   // update the components state when user is typing..
   performSearch(event) {
+    if (event.keyCode === 13) {
+        if(!isNaN(event.target.value) && event.target.value.length === 5) {
+          this.goto(event.target.value);
+        } else {
+          this.setState({ error: true });
+        }
+        return;
+    }
     this.setState({ searchText: event.target.value });
   }
 
@@ -58,7 +67,12 @@ class Autocomplete extends React.Component {
 
   render() {
     let listClass = classNames('autocomplete-results',{
-     'visible': this.state.listVisibility
+     'visible': this.state.listVisibility,
+     'error' : this.state.error
+    });
+
+    let inputClass = classNames('autocomplete-input',{
+     'error' : this.state.error
     });
 
     return (
@@ -67,7 +81,7 @@ class Autocomplete extends React.Component {
         <input type="text"
                name="autocomplete"
                placeholder="Enter City or Zip. Ex: Boston,MA or 02210"
-               className="autocomplete-input"
+               className={inputClass}
                onKeyUp={this.performSearch}
                onFocus={this.showList}
                onBlur={this.hideList}>
