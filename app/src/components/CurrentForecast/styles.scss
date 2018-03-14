@@ -1,0 +1,132 @@
+.current-conditions {
+  background: rgba(0,0,0,0.4);
+  margin: 1em;
+  padding: 1em;
+  color: white;
+  display: flex;
+  flex-flow: row wrap;
+  // justify-content: space-around;
+
+  .wx-details {
+    margin: 1em 0 1em 1.5em;
+    padding-right: 1.5em ;
+    border-right: solid 1px rgba(255,255,255,0.7);
+    flex: 1 auto;
+
+    &:not(:first-child) {
+      text-align: center;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+
+    .heading {
+      font-size: 24px;
+      font-weight: 500;
+      margin: 0.5em 0;
+    }
+
+    .wxicon {
+      vertical-align: middle;
+    }
+
+    .text {
+      font-size: 18px;
+      margin: 0.5em 0;
+    }
+  }
+
+  .current-forecast {
+    sup {
+      top: -0.3em;
+      left: -0.1em;
+    }
+
+    .location {
+      margin-top: 0;
+    }
+
+    .curr-temp {
+      font-size: 30px;
+
+      .wx-condition {
+        margin-bottom: 0.5em;
+
+        .wx-text {
+          font-size: 24px;
+          margin-left: 10px;
+        }
+      }
+
+      .wx-temp {
+        .temp {
+          font-size: 3em;
+          margin: 0.1em 0;
+
+          sup {
+            font-size: 40%;
+            top: -1em;
+            left: -0.3em;
+          }
+        }
+
+        .high-low {
+          font-size: 20px;
+          margin: 0.5em 0;
+
+          .high, .low {
+            margin: 0 15px 0 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .wind-details, .astronomy-details {
+    .wxicon {
+      font-size: 36px;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .current-conditions {
+    justify-content: space-around;
+
+    .wx-details {
+      flex: 1 100%;
+      padding-right: 0;
+      border-right: none !important;
+      border-bottom: solid 1px rgba(255,255,255,0.7);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .detail {
+        padding: 0 20px;
+
+        .heading {
+          float: left;
+          margin: 0 0 0.5em;
+          clear: both;
+        }
+
+        .wxicon {
+          margin: -5px 0 20px 20px;
+          float: right;
+        }
+
+        .text {
+          float: right;
+          margin: 0;
+        }
+      }
+    }
+
+    .current-forecast {
+      text-align: center;
+    }
+  }
+}

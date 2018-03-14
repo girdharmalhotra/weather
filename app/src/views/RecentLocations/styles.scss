@@ -1,0 +1,23 @@
+.loc-list {
+  margin: 1em auto;
+  list-style: none;
+  width: 25%;
+  background: rgba(0,0,0,0.6);
+  padding: 1em 0;
+
+  .list-item {
+    background: rgba(255,255,255,0.6);
+    margin: 1em;
+    padding: 1em;
+    box-sizing: border-box;
+
+    a {
+      text-decoration: none;
+      color: black;
+
+      &:hover {
+        color: brown;
+      }
+    }
+  }
+}
